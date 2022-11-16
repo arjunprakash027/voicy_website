@@ -1,0 +1,5 @@
+Hi, I am Arjun , I am an python developer and an avid learner of technology.
+I created this application to convert text into speech.
+There was an demand in feild of online education where there are need for human like explination for students but from an AI.
+I used the text to speech api from google and my python skills to create this application.
+Here we have to upload the text file containing anything that must be converted to speech, the program will take care of the rest

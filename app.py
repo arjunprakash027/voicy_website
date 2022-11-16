@@ -3,16 +3,19 @@ import os
 from converter import *
 from delete_file import *
 from download_mp import *
+from credentials import *
 import os
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ai-learning-text-to-speech-93061333450a.json"
 
+create_apikey()
 page = st.sidebar.radio("Select a page",
 ("Converter",
-"settings"))
+"settings",
+"intro"))
 
 if page == "Converter":
     st.title("VOICY")
-    image_file = st.file_uploader("Choose a file")
+    image_file = st.file_uploader("Choose a file",type=['.txt'])
     
 
     if image_file is not None:
@@ -44,6 +47,7 @@ if page == "Converter":
 
             st.audio(audio_bytes, format='audio/mp3')
             st.markdown(get_binary_file_downloader_html("converted_audio/{}".format(entry), '{}'.format(entry)), unsafe_allow_html=True)
+        os.remove("ai-learning-text-to-speech-93061333450a.json")
 
 
 if page == "settings":
@@ -65,3 +69,7 @@ if page == "settings":
         os.remove('settings.json')
         with open('settings.json', 'w') as f:
             json.dump(data, f, indent=4)
+if page == "intro":
+    audio_file = open('intro.mp3', 'rb')
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format='audio/mp3')
