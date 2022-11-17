@@ -11,4 +11,7 @@ six
 urllib3==1.26.12
 wincertstore==0.2
 google-cloud-texttospeech
+PyPDF2
+moviepy
+
 streamlit

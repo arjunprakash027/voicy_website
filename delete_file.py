@@ -26,3 +26,4 @@ def delete_audio():
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 if __name__ == '__main__':
     delete_files()
+    delete_audio()

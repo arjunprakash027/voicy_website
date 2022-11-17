@@ -11,6 +11,7 @@ logger = logging.getLogger()
  
 # Setting the threshold of logger to DEBUG
 logger.setLevel(logging.DEBUG)
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ai-learning-text-to-speech-93061333450a.json"
 
 
 def convert_to_speech(text,filename):
@@ -50,7 +51,8 @@ if __name__ ==  '__main__':
     content = {}
     entries = os.listdir('text_files/')
     for entry in entries:
-        f = open("text_files/{}".format(entry), "r")
+        print(entry)
+        f = open("text_files/{}".format(entry), "r",encoding='utf-8')
         text = ('''{}'''.format(f.read()))
         content[entry] = text
     for i in range (len(list(content))):
