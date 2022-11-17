@@ -1,0 +1,54 @@
+development of a crawler that collects information from a
+networks, and the technical features of Tor network. We
+data from a dark market. This approach helps in putting
+
+It is where most of the illicit activities take place. Such
+sharing Software Exploits information that hacktivists
+hackers can operate to perform a wide range security
+Personally Identifiable Information (PII). It also includes
+Service stake place in the Dark Web as well, they are
+
+Deep Web as the part that consists of everything the
+and software [1] [15]. Other researches define Deep Web
+contain legal and benign activities, while Dark Web is
+
+techniques where the data stays stored in a group of
+2. They take advantage of the infrastructure of the public
+that make it hard for the users outside the network to
+features is Tor (The Onion Router), in addition to I2P,
+
+traverse the World Wide Web information space by
+Crawlers have many uses in different applications and
+of all pages they visit for later processing. In other words,
+Web administrators also use crawlers for automatically
+information like email addresses and especially harmful
+1. Crawling Space: The crawler starts from a list of
+resources published by governments, or official nongovernmental organizations) [9], or electronic resources
+search engines (like Google). The crawling space can
+on.
+To fill data tables, we take advantage of the HTML tags
+This content also consists of many other tags with different
+CSS and XPath (response.css and response.xpath)
+elements into rows of corresponding data, in other words
+pulling out only the required data from the fetched pages
+ Steps to walk through
+and the developed algorithm for that market is as follows:
+1. The crawler starts from the market URL where a login
+Figure 4. The dark market structure
+3. Opens the path of the image and saves it to local disk.
+ 58 Journal of Digital Information Management  Volume 17 Number 2  April 2019
+6. Sends the credentials of the login form consisting of
+8. In case login failed, crawler stops, otherwise, it extracts
+9. Redirecting the request to the main page and calling
+10. For each category, the crawler fetches the category
+product processing for each extracted link. After finishing
+section at the bottom of the category page, also using
+11. In the product processing function, the crawler fetches
+• Product title
+• Shipment destination
+• Number of views (since the same date)
+In another version of the crawler we also extracted the
+available information about the vendor includes:
+• Trust Level
+
+

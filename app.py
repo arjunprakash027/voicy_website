@@ -34,7 +34,8 @@ if page == "Converter":
                 with open(os.path.join("text_files",image_file.name),"wb") as f: 
                     f.write(image_file.getbuffer())
                     f.close()
-                mybar.progress(5)         
+                mybar.progress(5)   
+                filesplitz()      
 
                 content = {}
                 entries = os.listdir('text_files/')
