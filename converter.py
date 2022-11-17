@@ -44,7 +44,7 @@ def convert_to_speech(text,filename):
         audio_config = audio_config
     )
 
-    with open('converted_audio/{}.mp3'.format(filename[:-4]),'wb',) as output:
+    with open('converted_audio/{}.mp3'.format("".join(filename[:-4].split())),'wb',) as output:
         output.write(response1.audio_content)
 
 if __name__ ==  '__main__':
