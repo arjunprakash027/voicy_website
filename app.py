@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components  # Import Streamlit
 import os
 from converter import *
 from delete_file import *
@@ -51,6 +52,14 @@ if page == "Converter":
                     #print(text)
                     convert_to_speech(text,filename)
                 mybar.progress(100)
+                entries = os.listdir('converted_audio/')
+                orginal_files = []
+                for entry in entries:
+                    audiofiles = "converted_audio/{}".format(entry)
+                    orginal_files.append(audiofiles)
+                concatenate_audio_moviepy(orginal_files,"converted_audio/{}.mp3".format(image_file.name))
+                for file in orginal_files:
+                    os.remove("{}".format(file))
                 
                 entries = os.listdir('converted_audio/')
                 for entry in entries:
@@ -143,7 +152,13 @@ if page == "settings":
         os.remove('settings.json')
         with open('settings.json', 'w') as f:
             json.dump(data, f, indent=4)
+
+
 if page == "intro":
     audio_file = open('intro.mp3', 'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/mp3')
+
+    HtmlFile = open("intro.html", 'r', encoding='utf-8')
+    source_code = HtmlFile.read() 
+    components.html(source_code,height = 1000)
