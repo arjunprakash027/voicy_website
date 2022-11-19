@@ -17,6 +17,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ai-learning-text-to-speech-93061
 def convert_to_speech(text,filename):
     with open('settings.json', 'r') as openfile:
         setting_file = json.load(openfile)
+        print(setting_file)
     #print(setting_file)
     client = texttospeech_v1.TextToSpeechClient()
 

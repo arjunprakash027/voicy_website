@@ -21,6 +21,24 @@ page = st.sidebar.radio("Select a page",
 if page == "Converter":
     st.title("VOICY")
     image_file = st.file_uploader("Choose a file",type=['.txt','.pdf'])
+
+    txt = st.text_area('Text to convert')
+    if st.button('convert text to speech'):
+        if txt is not None:
+            print(txt)
+            delete_files()
+            delete_audio()
+            convert_to_speech(txt,"Textfile")
+            entries = os.listdir('converted_audio/')
+            for entry in entries:
+                audio_file = open('converted_audio/{}'.format(entry), 'rb')
+                audio_bytes = audio_file.read()
+
+                st.audio(audio_bytes, format='audio/mp3')
+                st.markdown(get_binary_file_downloader_html("converted_audio/{}".format(entry), '{}'.format(entry)), unsafe_allow_html=True)
+                audio_file.close()
+            os.remove("ai-learning-text-to-speech-93061333450a.json")
+    
     
 
     if image_file is not None:
@@ -35,7 +53,7 @@ if page == "Converter":
                 with open(os.path.join("text_files",image_file.name),"wb") as f: 
                     f.write(image_file.getbuffer())
                     f.close()
-                mybar.progress(5)   
+                mybar.progress(5)  
                 filesplitz()      
 
                 content = {}
@@ -49,7 +67,7 @@ if page == "Converter":
                 for i in range (len(list(content))):
                     filename = list(content)[i]
                     text = list(content.values())[i]
-                    #print(text)
+                    print(text)
                     convert_to_speech(text,filename)
                 mybar.progress(100)
                 entries = os.listdir('converted_audio/')
@@ -57,7 +75,8 @@ if page == "Converter":
                 for entry in entries:
                     audiofiles = "converted_audio/{}".format(entry)
                     orginal_files.append(audiofiles)
-                concatenate_audio_moviepy(orginal_files,"converted_audio/{}.mp3".format(image_file.name))
+                if len(orginal_files) > 1:
+                    concatenate_audio_moviepy(orginal_files,"converted_audio/{}.mp3".format(image_file.name))
                 for file in orginal_files:
                     os.remove("{}".format(file))
                 
