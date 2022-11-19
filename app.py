@@ -24,7 +24,9 @@ if page == "Converter":
 
     txt = st.text_area('Text to convert')
     if st.button('convert text to speech'):
-        if txt is not None:
+        if txt == "":
+            st.warning("please give a text")
+        else:
             print(txt)
             delete_files()
             delete_audio()
@@ -38,6 +40,7 @@ if page == "Converter":
                 st.markdown(get_binary_file_downloader_html("converted_audio/{}".format(entry), '{}'.format(entry)), unsafe_allow_html=True)
                 audio_file.close()
             os.remove("ai-learning-text-to-speech-93061333450a.json")
+            
     
     
 
