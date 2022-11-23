@@ -8,8 +8,8 @@ def concatenate_audio_moviepy(audio_clip_paths, output_path):
     final_clip = concatenate_audioclips(clips)
     final_clip.write_audiofile(output_path)
 
-entries = os.listdir('converted_audio/')
-orginal_files = []
+# entries = os.listdir('converted_audio/')
+# orginal_files = []
 
 if __name__ == '__main__':
     for entry in entries:
